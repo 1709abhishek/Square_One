@@ -16,10 +16,10 @@ var recaptcha = new Recaptcha(API_KEY, SECRET_KEY, { callback: 'cb' });
 
 router.get("/profile", passport.checkAuthentication, usersController.profile);
 
-router.get("/sign-up", recaptcha.middleware.verify, usersController.signUp);
-router.get("/sign-in", recaptcha.middleware.verify, usersController.signIn);
+router.get("/sign-up", recaptcha.middleware.render, usersController.signUp);
+router.get("/sign-in", recaptcha.middleware.render, usersController.signIn);
 
-router.post("/create", usersController.create);
+router.post("/create", recaptcha.middleware.verify, usersController.create);
 
 // use passport as a middleware to authenticate
 router.post(
@@ -28,9 +28,14 @@ router.post(
     failureRedirect: "/users/sign-in",
     failureFlash: true
   }),
+  recaptcha.middleware.verify,
   usersController.createSession
 );
 
 router.get("/sign-out", usersController.destroySession);
+
+router.get("/reset-password", usersController.resetPass);
+
+router.post('/update', usersController.update);
 
 module.exports = router;

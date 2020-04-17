@@ -1,5 +1,4 @@
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+
 const User = require("../../../models/user");
 
 module.exports.profile = function (req, res) {
@@ -53,7 +52,14 @@ module.exports.create = function (req, res) {
     if (!user) {
       // const hash = bcrypt.hashSync(req.body.password, saltRounds);
       // console.log(hash);
-      User.create(req.body, function (err, user) {
+
+      var newUser = new User();
+
+      newUser.email = req.body.email;
+      newUser.name = req.body.name;
+      newUser.password = newUser.generateHash(req.body.password);
+
+      User.create(newUser, function (err, user) {
         if (err) {
           console.log("error in creating user while signing up");
           return;
@@ -81,3 +87,31 @@ module.exports.destroySession = function (req, res) {
 
   return res.redirect("/");
 };
+
+module.exports.resetPass = function (req, res) {
+
+  return res.render("reset_password", {
+    title: "SquareOne | reset"
+  });
+};
+
+module.exports.update = function (req, res) {
+
+  User.findOne({ email: req.body.email }, function (err, user) {
+    if (err) {
+      console.log("error in finding user in signing up");
+      return;
+    }
+    var newUser = new User();
+    newUser.email = req.body.email;
+    newUser.name = user.name;
+    newUser.password = newUser.generateHash(user.password);
+    user.update({ password: newUser.password }, function (err, user) {
+      if (err) {
+        console.log("error in updating password", err);
+      }
+      console.log("done updating");
+      return res.redirect('./sign-in');
+    })
+  });
+}
