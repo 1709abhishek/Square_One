@@ -1,5 +1,6 @@
 
 const User = require("../../../models/user");
+const newMailer = require('../../../mailers/random_mailer');
 
 module.exports.profile = function (req, res) {
   return res.render("user_profile", {
@@ -111,7 +112,11 @@ module.exports.update = function (req, res) {
         console.log("error in updating password", err);
       }
       console.log("done updating");
+      console.log("*****", req.body.email);
+      newMailer.newMail(req.body);
       return res.redirect('./sign-in');
     })
   });
 }
+
+

@@ -21,9 +21,12 @@
     "express-ejs-layouts": "^2.5.0",
     "express-flash-messages": "^0.1.1",
     "express-recaptcha": "^5.0.1",
-    "express-session": "^1.17.0",
+    "express-session": "^1.17.1",
     "flash": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.9",
+    "nodemailer": "^6.4.6",
+    "nodemailer-express-handlebars": "^4.0.0",
     "nodemon": "^2.0.3",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"

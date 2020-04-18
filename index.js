@@ -15,6 +15,8 @@ const CustomMware = require("./config/middleware");
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+app.use(express.static('./assets'));
+
 //body parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
