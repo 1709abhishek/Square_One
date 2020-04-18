@@ -36,11 +36,12 @@ A complete authentication system which can be used as a starter code for creatin
 
 
 # Routes
-1. /upload-csv → To upload a csv.
-2. /show-all → To show all the file links(made frontend also)
-3. /show/:id -> To show a specific file(made frontend)
-4. /search -> To search a key
-
+1. / → home.
+2. /sign-in → sign-in page
+3. /sign-out -> sign-out page
+4. /sign-up -> sign up page
+5. /forgot-password -> forgot pass page
+6. /reset-password -> reset pass page
 
 
 # setup
