@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
+var jwt = require('jwt-simple');
 
 const usersController = require("../../../controllers/api/v1/users_controller");
 

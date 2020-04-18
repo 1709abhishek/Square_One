@@ -26,13 +26,17 @@ exports.newMail = (mail) => {
 exports.newForgot = (mail, data) => {
     console.log("inside newMail mailer");
     console.log(mail);
-    let url = "http://localhost:8000/users/reset-password?token=" + data;
+    let url = "http://localhost:8000/users/reset-password?token=" + data.token;
+
     console.log(url);
     nodeMailer.transporter.sendMail({
         from: '1709abhishek@gmail.com',
         to: mail.email,
-        subject: "Password reset success",
-        html: '<h1> Remember your new password! </h1> <h3> here is the link </h3> <h5><a href={url}>Link</a></h5>>'
+        subject: "Password reset link success",
+        html: "<h1> {{url}} </h1>",
+        context: {
+            url: 'http://localhost:8000/users/reset-password?token=' + data.token
+        }
     }, (err, info) => {
         if (err) {
             console.log('error in sending mail', err);

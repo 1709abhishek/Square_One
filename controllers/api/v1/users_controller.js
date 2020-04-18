@@ -139,11 +139,39 @@ module.exports.forgotPassword = async function (req, res) {
     newMailer.newForgot(req.body,
       {
         // doctor: doctor,
-        token: jwt.sign(user.toJSON(), 'blahSomething', { expiresIn: '10000' })
+        token: jwt.sign(user.toJSON(), 'blahSomething', { expiresIn: '100000' })
       });
+    return res.redirect('./sign-in');
   } catch (err) {
     console.log('********', err);
   }
 }
+
+// module.exports.verify = function (req, res) {
+//   jwt.verify(req.params.token, 'blahSomething', function (err, decoded) {
+//     if (err) {
+//       console.log("error during verifying");
+//     }
+//     let user = decoded;
+//     if (req.body.password != req.body.confirm_password) {
+//       console.log("password mismatch");
+//       req.flash('error', 'passwords mismatch');
+//       return res.redirect('back');
+//     }
+//     let newUser = new User();
+//     newUser.name = user.name;
+//     newUser.email = user.email;
+//     newUser.password = newUser.generateHash(req.body.password);
+//     user.update({ password: newUser.password }, function (err, user) {
+//       if (err) {
+//         console.log("error in updating password", err);
+//       }
+//       console.log("done updating");
+//       console.log("*****", req.body.email);
+//       newMailer.newMail(req.body);
+//       return res.redirect('./sign-in');
+//     })
+//   });
+// }
 
 
