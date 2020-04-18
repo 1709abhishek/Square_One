@@ -36,12 +36,15 @@ A complete authentication system which can be used as a starter code for creatin
 
 
 # Routes
-1. / → home.
-2. /sign-in → sign-in page
-3. /sign-out -> sign-out page
-4. /sign-up -> sign up page
-5. /forgot-password -> forgot pass page
-6. /reset-password -> reset pass page
+API | Request Body | Method | Description | Response
+|---|---|---|---|---|
+| [/] | No | POST | User Sign up  | No
+| [/users/sign-in/] | (email, password) | POST | User Login | No
+| [/users/sign-out/] | No | GET | Logout User | No
+| [/users/sign-up/] | (email, password, name, confirm_password) | POST | User Sign Up | No
+| [/users/reset-password/] | No | Post | Reset password | No
+| [/users/forgot-password/] | (email) | UPDATE | Authentication Token | No
+| [/users/profile/] | No | GET | Get user's details | No
 
 
 # setup
