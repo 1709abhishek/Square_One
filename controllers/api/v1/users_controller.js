@@ -1,6 +1,7 @@
 
 const User = require("../../../models/user");
 const newMailer = require('../../../mailers/random_mailer');
+const jwt = require('jsonwebtoken');
 
 module.exports.profile = function (req, res) {
   return res.render("user_profile", {
@@ -117,6 +118,32 @@ module.exports.update = function (req, res) {
       return res.redirect('./sign-in');
     })
   });
+}
+
+module.exports.forgot = function (req, res) {
+  return res.render("forgot_password", {
+    title: "User forgot pass",
+  });
+};
+
+module.exports.forgotPassword = async function (req, res) {
+
+  try {
+    let user = await User.findOne({ email: req.body.email });
+
+    if (!user) {
+      req.flash('error', 'invalid username');
+      return res.redirect('back');
+    }
+
+    newMailer.newForgot(req.body,
+      {
+        // doctor: doctor,
+        token: jwt.sign(user.toJSON(), 'blahSomething', { expiresIn: '10000' })
+      });
+  } catch (err) {
+    console.log('********', err);
+  }
 }
 
 
