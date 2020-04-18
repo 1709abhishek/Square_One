@@ -50,15 +50,15 @@ Routes | Request Body | Method | Description | Response
 
 # setup
 
->         clone https://github.com/1709abhishek/SquareOne
+>         git clone https://github.com/1709abhishek/SquareOne
 >         cd SquareOne
 >         run nodemon index.js
-5. SignUp
-6. click on click me a form will appear
-7. SignIn
-8. click on click me a form will appear
-9. reset password
-10. Sign out
+---- SignUp
+---- click on click me a form will appear
+---- SignIn
+---- click on click me a form will appear
+---- reset password
+---- Sign out
 
 
 
