@@ -1,5 +1,5 @@
 
-# Bookmark API
+# SquareOne
 
 A complete authentication system which can be used as a starter code for creating any new application
 
@@ -30,6 +30,8 @@ A complete authentication system which can be used as a starter code for creatin
 15. "mongoose"
 16. "passport"
 17. "passport-local"
+18. "nodemailer"
+19. "nodemailer-express-handlebars"
 
 
 
@@ -42,16 +44,15 @@ A complete authentication system which can be used as a starter code for creatin
 
 
 # setup
-1. clone https://github.com/1709abhishek/Bookmark-API
-2. cd BookmarkAPI
+1. clone https://github.com/1709abhishek/SquareOne
+2. cd SquareOne
 3. run nodemon index.js
-4. open postman and visit localhost:8000/upload-csv
-5. upload csv file in body tag by selecting file.
-6. open browser and visit localhost:8000/show-all
-7. open browser and visit localhost:8000/show/:id (paste id) or click the link.
-8. enter something in search.
-9. data models are:
---Files: filename
+5. SignUp
+6. click on click me a form will appear
+7. SignIn
+8. click on click me a form will appear
+9. reset password
+10. Sign out
 
 
 
@@ -60,29 +61,55 @@ A complete authentication system which can be used as a starter code for creatin
 
     ├── index.js
     ├── package.json
+    ├── assets
+    |    ├── css
+    |        ├── signUp.css    
     ├── config
-        ├── mongoose.js   
-    ├── tmp
-    │   ├── csv
-    │       ├── csv_files_stored_through_multe
+        ├── mongoose.js
+        ├── middleware.js   
+        ├── nodemailer.js   
+        ├── passport-local-strategy.js    
+    ├── controllers
+    |    ├── api
+    |        ├── v1
+    |            ├── home_controller.js  
+    |            ├── users_controller.js          
+    ├── mailers
+    │   ├── random_mailer.js
+    ├── models
+    │   ├── user.js
     ├── views
-    │   ├── home.ejs
-    │   ├── search.js
-    │   ├── select.js
-    └── api
-        ├── controllers
-        │   ├── homeController.js
-        ├── models
-        │   ├── Files.js
-        ├── routes
-            ├── index.js
+    │   ├── _footer.ejs
+        ├── _header.ejs
+        ├── home.ejs
+        ├── layout.ejs
+        ├── reset_password.ejs
+        ├── user_profile.ejs
+        ├── user_sign_in.ejs
+        ├── user_sign_up.ejs
+    ├── routes
+    |    ├── api
+    |        ├── v1
+    |            ├── index.js  
+    |            ├── users.js
+    ├── .gitignore
 
 
 # Features
-1. Upload any csv file into the system (consider the delimiter to be a comma ‘ , ’) [If you don’t know what’s a csv, download the other file in this folder and take a look at it, then google a little more]
-2. Display a list of all uploaded csv files
-3. When the user selects a file, display all the data (with column headers) in a table on the page (front end)
-4. There should be a search box which searches on the front end itself and displays the matching rows of the table only (empty search box displays all the data). (you can put a search on any one column)
+Implemented the following for a user with respective html pages:
+1. Sign up with email
+2. Sign in (you can redirect to a blank home page with a sign out and reset password button after sign in)
+3. Forgot password (you can either generate a random password and send on email, or send a reset password link which expires in some time [preferred])
+4. Sign out 
+5. Reset password after sign in
+6. The password stored in the db should be encrypted
+7. Taken care of the following
+Display notifications for 
+--unmatching passwords during sign up
+--incorrect password during sign in
+8. enable re-captcha on both sign up and log in
+9. enable nodemailer for mailing
+
 
 
 # Bugs or improvements
