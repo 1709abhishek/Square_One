@@ -36,7 +36,8 @@ A complete authentication system which can be used as a starter code for creatin
 
 
 # Routes
-API | Request Body | Method | Description | Response
+
+Routes | Request Body | Method | Description | Response
 |---|---|---|---|---|
 | [/] | No | POST | User Sign up  | No
 | [/users/sign-in/] | (email, password) | POST | User Login | No
@@ -48,9 +49,10 @@ API | Request Body | Method | Description | Response
 
 
 # setup
-1. clone https://github.com/1709abhishek/SquareOne
-2. cd SquareOne
-3. run nodemon index.js
+
+>         clone https://github.com/1709abhishek/SquareOne
+>         cd SquareOne
+>         run nodemon index.js
 5. SignUp
 6. click on click me a form will appear
 7. SignIn
