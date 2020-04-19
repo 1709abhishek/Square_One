@@ -1,6 +1,8 @@
 
 # SquareOne
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/30496e37485a447f994043bf941ceda6)](https://app.codacy.com/manual/1709abhishek/Square_One?utm_source=github.com&utm_medium=referral&utm_content=1709abhishek/Square_One&utm_campaign=Badge_Grade_Dashboard)
+
 A complete authentication system which can be used as a starter code for creating any new application
 
 
